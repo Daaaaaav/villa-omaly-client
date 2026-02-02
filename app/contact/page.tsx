@@ -5,19 +5,19 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
 import { Mail, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion} from "framer-motion";
+import type { Variants } from "framer-motion";
 
-/* ===============================
-   Animation Variants
-=============================== */
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
 };
 
 const staggerContainer = {

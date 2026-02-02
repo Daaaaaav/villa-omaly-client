@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { easeOut } from "framer-motion";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useLanguage } from "../context/LanguageContext";
@@ -16,19 +17,20 @@ import {
   Trees,
   Building,
 } from "lucide-react";
+import type { Variants } from "framer-motion";
 
-/* ===============================
-   Animations
-=============================== */
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
 };
+
 
 const staggerContainer = {
   hidden: {},
@@ -37,15 +39,17 @@ const staggerContainer = {
   },
 };
 
-const listItem = {
-  hidden: { opacity: 0, y: 12 },
+const listItem: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
+    transition: {
+      duration: 0.4,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }
 };
-
 export default function VillaDetails() {
   const { lang } = useLanguage();
   const seo = useSeo("details");
@@ -517,7 +521,8 @@ export default function VillaDetails() {
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="relative h-36"
                     >
-                    <button
+                    <button 
+                      title="image-details"
                       onClick={() =>
                         setActiveImage({ src: item.image, alt: item.alt })
                       }

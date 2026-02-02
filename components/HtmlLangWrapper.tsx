@@ -8,7 +8,9 @@ export default function HtmlLangWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const { lang, dir } = useLanguage();
+  const { lang } = useLanguage();
+
+  const dir = lang === "ar" ? "rtl" : "ltr";
 
   useEffect(() => {
     document.documentElement.lang = lang;
